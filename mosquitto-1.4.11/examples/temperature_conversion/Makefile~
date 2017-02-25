@@ -6,13 +6,13 @@ LDFLAGS=-L../../lib ../../lib/cpp/libmosquittopp.so.1 ../../lib/libmosquitto.so.
 all : mqtt_temperature_conversion
 
 mqtt_temperature_conversion : main.o temperature_conversion.o
-	${CROSS_COMPILE}${CXX} $^ -o $@ ${LDFLAGS}
+	${CXX} $^ -o $@ ${LDFLAGS}
 
 main.o : main.cpp
-	${CROSS_COMPILE}${CXX} -c $^ -o $@ ${CFLAGS}
+	${CXX} -c $^ -o $@ ${CFLAGS}
 
 temperature_conversion.o : temperature_conversion.cpp
-	${CROSS_COMPILE}${CXX} -c $^ -o $@ ${CFLAGS}
+	${CXX} -c $^ -o $@ ${CFLAGS}
 
 clean : 
 	-rm -f *.o mqtt_temperature_conversion
