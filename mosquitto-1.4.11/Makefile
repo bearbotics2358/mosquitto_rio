@@ -3,6 +3,10 @@ include config.mk
 DIRS=lib client src
 DOCDIRS=man
 DISTDIRS=man
+CROSS_COMPILE:=arm-frc-linux-gnueabi-
+CC=gcc
+DESTDIR=_install
+export
 
 .PHONY : all mosquitto docs binary clean reallyclean test install uninstall dist sign copy
 
@@ -54,7 +58,7 @@ uninstall :
 
 dist : reallyclean
 	set -e; for d in ${DISTDIRS}; do $(MAKE) -C $${d} dist; done
-	
+
 	mkdir -p dist/mosquitto-${VERSION}
 	cp -r client examples installer lib logo man misc security service src test about.html aclfile.example ChangeLog.txt CMakeLists.txt compiling.txt config.h config.mk CONTRIBUTING.md edl-v10 epl-v10 LICENSE.txt Makefile mosquitto.conf notice.html pskfile.example pwfile.example readme.md readme-windows.txt dist/mosquitto-${VERSION}/
 	cd dist; tar -zcf mosquitto-${VERSION}.tar.gz mosquitto-${VERSION}/
