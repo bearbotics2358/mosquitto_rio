@@ -29,3 +29,16 @@ One of the developers had put in updates as described here:
 https://dev.eclipse.org/mhonarc/lists/mosquitto-dev/msg0010
 
 But not completely.  Thus the changes described above.
+
+## Install lib in RoboRio Development Environment
+
+According to commit from Endeavor in 2018:
+Ended up putting libmosquitto.a (from mosquitto-rio) in ~/wpilib/user/cpp/lib, which is where the CTRE libs are located
+Project settings update:
+- Removed Endeavor/lib/ and removed it from library paths - not needed
+- Added "mosquitto" to libraries
+
+libmosquitto.a is in this repository in mosquitto-1.4.11/lib
+For 2019, copy this file to frc2019/roborio/lib
+
+Also, add mosquitto.h (from lib directory above) to project
